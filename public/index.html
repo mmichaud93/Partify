@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	    <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Partify</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    	<link rel="shortcut icon" href="favicon.ico">
+    	<link href='http://fonts.googleapis.com/css?family=Acme' rel='stylesheet' type='text/css'>
+    	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+    	<link href="assets/styles.css" rel="stylesheet" media="screen">
+	</head>
+
+	<body>
+		<p>
+			PARTIFY! EXCELLENT!
+		</p>
+		Add something to the queue! <input id="add" type="text" name="" submit="submitToQueue()">
+		<div id="div1"></div>
+		<script type="text/javascript">
+			$("#div1").load("http://localhost:4000/queue");
+			$("#add").keyup(function(event){
+    			if(event.keyCode == 13){
+        			submitToQueue();
+    			}
+			});
+			function submitToQueue() {
+
+				$.post("http://localhost:4000/queue?item="+$("#add").val(), "",
+ 					function(data,status){
+ 						$("#add").val("");
+    					$("#div1").load("http://localhost:4000/queue");
+  					});
+			}
+		</script>
+		
+	</body>
+</html>

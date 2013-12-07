@@ -1,0 +1,17 @@
+{
+  "name": "Partify",
+  "version": "0.1.0",
+  "description": "Partify",
+  "main": "partify-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
+  },
+  "keywords": [
+    "Node.js",
+    "Eclipse",
+    "Nodeclipse"
+  ],
+  "author": "",
+  "license": "BSD-2-Clause",
+  "dependencies": {"restify":"2.6.x"}
+}
