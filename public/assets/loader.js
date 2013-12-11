@@ -1,6 +1,8 @@
 $(document).ready(function() {
 	// pull the current data from the server, this process 
 	// will most likely be wicked fast and unnoticable
+	
+
 	$("#current_song_title").html("Take a Walk");
 	$("#current_song_artist").html("Passion Pit");
 	$("#current_song_submit").html("~Gabbie");
@@ -30,9 +32,15 @@ $(document).ready(function() {
     	search($('#search-input').val());
 	});
 	$("#search-button").click(OnClickAdd);
-
+	loaded();
 	reloadPlaylist();
 });
+function loaded() {
+	console.log(document.location.host);
+	$.get("http://"+document.location.host+"/queue", function( data ) {
+		console.log(data);
+	});
+}
 
 var added = false;
 function OnClickAdd() {
@@ -54,7 +62,6 @@ function OnClickAdd() {
 		$("#playlist").css("position","relative");
 		//$("#search-body").css("position","fixed");
 	}
-	
 }
 var tracks;
 function search(text) {
@@ -73,14 +80,15 @@ function search(text) {
 				var add = "<p id=\""+i+"\" class=\"search-item\" style=\"height:24px;\">"+tracks[i].name+", "+tracks[i].artists[0].name+"</p>"
 				$("#search-content").append(add);
 				$("#"+i).click(function() {
+					var i = $(this).attr('id');
 					$(this).css("background-color", "#1F2933");
 					var obj = {
-						"name" : name,
-						"artist" : artist,
-						"uri" : href
+						"name" : tracks[i].name,
+						"artist" : tracks[i].artists[0].name,
+						"uri" : tracks[i].href
 					};
 					JSON.stringify(obj);
-					$.post("http://"+document.host+"/queue?item="+obj);
+					$.post("http://"+document.location.host+"/queue?item="+obj);
 				});
 			}
 		}
