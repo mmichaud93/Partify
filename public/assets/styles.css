@@ -1,5 +1,125 @@
-#title
+.title
 {
+	font-size: 18px;
+	color: #AA00AA;
+}
+.currentrow
+{
+/* Note: This gradient may render differently in browsers that don't support the unprefixed gradient syntax */
+
+/* IE10 Consumer Preview */ 
+background-image: -ms-linear-gradient(bottom right, #211637 0%, #111111 100%);
+
+/* Mozilla Firefox */ 
+background-image: -moz-linear-gradient(bottom right, #211637 0%, #111111 100%);
+
+/* Opera */ 
+background-image: -o-linear-gradient(bottom right, #211637 0%, #111111 100%);
+
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(linear, right bottom, left top, color-stop(0, #211637), color-stop(1, #111111));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-linear-gradient(bottom right, #211637 0%, #111111 100%);
+
+/* W3C Markup, IE10 Release Preview */ 
+background-image: linear-gradient(to top left, #211637 0%, #111111 100%);
+}
+.queuerow
+{
+/* IE10 Consumer Preview */ 
+background-image: -ms-linear-gradient(right, #211637 95%, #111111 100%);
+
+/* Mozilla Firefox */ 
+background-image: -moz-linear-gradient(right, #211637 95%, #111111 100%);
+
+/* Opera */ 
+background-image: -o-linear-gradient(right, #211637 95%, #111111 100%);
+
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(linear, right top, left top, color-stop(0.95, #211637), color-stop(1, #111111));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-linear-gradient(right, #211637 95%, #111111 100%);
+
+/* W3C Markup, IE10 Release Preview */ 
+background-image: linear-gradient(to left, #211637 95%, #111111 100%);
+}
+.albumcover
+{
+	width:100%;
+	display: block;
+}
+.vote
+{
+	width:150%;
+	display: block;
+}
+.song-row2
+{
+/* IE10 Consumer Preview */ 
+background-image: -ms-linear-gradient(top, #EEEEEE 0%, #CCCCCC 3%, #CCCCCC 97%, #EEEEEE 100%);
+
+/* Mozilla Firefox */ 
+background-image: -moz-linear-gradient(top, #EEEEEE 0%, #CCCCCC 3%, #CCCCCC 97%, #EEEEEE 100%);
+
+/* Opera */ 
+background-image: -o-linear-gradient(top, #EEEEEE 0%, #CCCCCC 3%, #CCCCCC 97%, #EEEEEE 100%);
+
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #EEEEEE), color-stop(0.03, #CCCCCC), color-stop(0.97, #CCCCCC), color-stop(1, #EEEEEE));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-linear-gradient(top, #EEEEEE 0%, #CCCCCC 3%, #CCCCCC 97%, #EEEEEE 100%);
+
+/* W3C Markup, IE10 Release Preview */ 
+background-image: linear-gradient(to bottom, #EEEEEE 0%, #CCCCCC 3%, #CCCCCC 97%, #EEEEEE 100%);
+}
+.song-row
+{
+	background-color: #111111;
+	}
+.song-title
+{
+	font-size: 20px;
+}
+.song-artist
+{
+	font-size: 18px;
+}
+.song-queue
+{
+	font-size: 28px;
+}
+#search-container
+{
+	position:fixed;
+}
+#search-button
+{
+	z-index: 998; 
+	position:fixed;
+	right:0;
+	bottom:0;
 	font-size: 24px;
-	
+	background-color:#2B3B4A; 
+	color:#99CCFF; 
+	text-align:center;
+	border-top-right-radius:5px;
+	border-top-left-radius:5px;
+}
+#search-body
+{
+	z-index: 997; 
+	position:fixed;
+	right:0;
+	bottom:0;
+	background-color:#2B3B4A; 
+	color:#99CCFF; 
+	text-align:center;
+	width:100%;
+}
+#search-input
+{
+	width: 100%;
 }

@@ -3,9 +3,12 @@
 <html lang="en">
 	<head>
 	    <meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<title>Partify</title>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="assets/loader.js"></script>
     	<link rel="shortcut icon" href="favicon.ico">
     	<link href='http://fonts.googleapis.com/css?family=Acme' rel='stylesheet' type='text/css'>
     	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
@@ -13,11 +16,65 @@
 	</head>
 
 	<body>
-		<p id="title">
-			PARTIFY! EXCELLENT!
-		</p>
-		Add something to the queue! <input id="add" type="text" name="" submit="submitToQueue()">
-		<div id="div1"></div>
+		<div id="current" class="container" style="position:fixed; z-index: 999; ">
+			<div class="row currentrow" style="margin-right:-15px; padding:4px; padding-top:8px;">
+				<div class="col-xs-6" style="">
+					<img id="current_song_image" src="" class="img-rounded albumcover">
+				</div>
+				<div class="col-xs-6" style="">
+					<div class="row" style="margin-right:0px; margin-top:8px;">
+						<div class="col-xs-12" style="">
+							<p style="color:#FFFFFF; font-size:18px;"><b id="current_song_title"></b></p>
+						</div>
+					</div>
+					<div class="row" style="margin-right:0px; margin-top:8px;">
+						<div class="col-xs-12" style="margin-top:-22px;">
+							<p id="current_song_artist" style="color:#EEEEEE; text-align:left;"></p>
+						</div>
+					</div>
+					<div class="row" style="margin-right:0px; margin-top:8px;">
+						<div class="col-xs-12" style="margin-top:-22px;">
+							<p id="current_song_submit" style="color:#EEEEEE; text-align:left;"></p>
+						</div>
+					</div>
+					<div class="row" style="margin-right:0px; margin-top:0px;">
+						<div class="col-xs-5" style="">
+							<img class="vote" src="assets/thumbsup.png" id="thumbsup">
+						</div>
+						<div class="col-xs-5" style="">
+							<img class="vote" src="assets/thumbsdown.png" id="thumbsup">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-right:-15px;">
+				<div class="col-xs-9" style="background-color:#00FF00; height:4px;">
+					
+				</div>
+				<div class="col-xs-3" style="background-color:#FF0000; height:4px;">
+					
+				</div>
+			</div>
+		</div>
+		<div class="container" >
+			<div id="playlist">
+			
+			</div>
+		</div>
+
+		<div id="search-container" class="container">
+			<div class="row"> 
+				<div class="col-xs-12">
+					<div id="search-button"><b>+</b></div>
+					<div id="search-body">
+						<input id="search-input"></input>
+						<div id="search-content"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--Add something to the queue! <input id="add" type="text" name="" submit="submitToQueue()">
+		<div id="div1"></div>-->
 		<script type="text/javascript">
 			$("#div1").load("http://localhost:4000/queue");
 			$("#add").keyup(function(event){
