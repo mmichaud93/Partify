@@ -36,9 +36,9 @@ $(document).ready(function() {
 	reloadPlaylist();
 });
 function loaded() {
-	console.log(document.location.host);
-	$.get("http://"+document.location.host+"/queue", function( data ) {
-		console.log(data);
+	$.get(document.location.protocol+"//"+document.location.host+"/queue", function( data ) {
+		for(var i = 0; i < data.length; i++) {
+		}
 	});
 }
 
@@ -87,8 +87,8 @@ function search(text) {
 						"artist" : tracks[i].artists[0].name,
 						"uri" : tracks[i].href
 					};
-					JSON.stringify(obj);
-					$.post("http://"+document.location.host+"/queue?item="+obj);
+					obj = JSON.stringify(obj);
+					$.post(document.location.protocol+"//"+document.location.host+"/queue?item="+obj);
 				});
 			}
 		}
