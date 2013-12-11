@@ -73,24 +73,5 @@
 				</div>
 			</div>
 		</div>
-		<!--Add something to the queue! <input id="add" type="text" name="" submit="submitToQueue()">
-		<div id="div1"></div>-->
-		<script type="text/javascript">
-			$("#div1").load("http://localhost:4000/queue");
-			$("#add").keyup(function(event){
-    			if(event.keyCode == 13){
-        			submitToQueue();
-    			}
-			});
-			function submitToQueue() {
-
-				$.post("http://localhost:4000/queue?item="+$("#add").val(), "",
- 					function(data,status){
- 						$("#add").val("");
-    					$("#div1").load("http://localhost:4000/queue");
-  					});
-			}
-		</script>
-		
 	</body>
 </html>

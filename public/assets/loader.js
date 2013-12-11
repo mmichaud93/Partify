@@ -73,13 +73,14 @@ function search(text) {
 				var add = "<p id=\""+i+"\" class=\"search-item\" style=\"height:24px;\">"+tracks[i].name+", "+tracks[i].artists[0].name+"</p>"
 				$("#search-content").append(add);
 				$("#"+i).click(function() {
+					$(this).css("background-color", "#1F2933");
 					var obj = {
 						"name" : name,
 						"artist" : artist,
 						"uri" : href
 					};
 					JSON.stringify(obj);
-					$.post("http://10.0.0.9:4000/queue?item="+obj);
+					$.post("http://"+document.host+"/queue?item="+obj);
 				});
 			}
 		}
