@@ -1,3 +1,9 @@
+body {
+	overflow-x: hidden;
+}
+html {
+	background-color: #111111;
+}
 .title
 {
 	font-size: 18px;
@@ -100,13 +106,13 @@ background-image: linear-gradient(to bottom, #EEEEEE 0%, #CCCCCC 3%, #CCCCCC 97%
 	z-index: 998; 
 	position:fixed;
 	right:0;
-	bottom:0;
+	top:0;
 	font-size: 24px;
 	background-color:#2B3B4A; 
 	color:#99CCFF; 
 	text-align:center;
-	border-top-right-radius:5px;
 	border-top-left-radius:5px;
+	border-bottom-left-radius:5px;
 }
 #search-body
 {
@@ -118,8 +124,14 @@ background-image: linear-gradient(to bottom, #EEEEEE 0%, #CCCCCC 3%, #CCCCCC 97%
 	color:#99CCFF; 
 	text-align:center;
 	width:100%;
+	visibility: hidden;
 }
 #search-input
 {
-	width: 100%;
+	margin-left: 8px;
+	margin-right: 8px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	height:32px;
+	visibility: hidden;
 }

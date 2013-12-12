@@ -1,44 +1,17 @@
 $(document).ready(function() {
-	// pull the current data from the server, this process 
-	// will most likely be wicked fast and unnoticable
-	
-
-	$("#current_song_title").html("Take a Walk");
-	$("#current_song_artist").html("Passion Pit");
-	$("#current_song_submit").html("~Gabbie");
-	$("#current_song_image").attr("src","assets/passionpit.jpg");
-	$("#playlist").html("");
-
-	$("#current_song_image").load(function() {
-		var marginTop = ($("#current").height());
-		$("#playlist").css("margin-top", (marginTop)+"px");
-		$("#search-button").css("height", 32+"px");
-		$("#search-button").css("width", 64+"px");
-		$("#search-body").css("top", $(window).height()+"px");
-	});
-	/*$("#playlist").scroll(function() {
-  		if(!added) {
-			$("#search-button").css("color", "#0099FF");
-			$("#search-button").css("top", ($("#current").height())+"px");
-			$("#search-body").css("height", ($(window).height()-($("#current").height()+$("#search-button").height()))+"px");
-			$("#search-body").css("top", ($("#current").height()+$("#search-button").height())+"px");
-		} else {
-			$("#search-button").css("color", "#99CCFF");
-			$("#search-button").css("top", ($(window).height()-$("#search-button").height())+"px");
-			$("#search-body").css("top", ($(window).height())+"px");
-		}
-	});*/
 	$('#search-input').on('input', function() {
     	search($('#search-input').val());
 	});
 	$("#search-button").click(OnClickAdd);
+	
 	loaded();
-	reloadPlaylist();
 });
+var loadedData;
 function loaded() {
 	$.get(document.location.protocol+"//"+document.location.host+"/queue", function( data ) {
-		for(var i = 0; i < data.length; i++) {
-		}
+		loadedData = data;
+		
+		reloadPlaylist();
 	});
 }
 
@@ -48,20 +21,31 @@ function OnClickAdd() {
 		// expand
 		added=true;
 		$("#search-button").css("color", "#0099FF");
-		$("#search-button").css("top", ($("#current").height())+"px");
 		$("#search-body").css("height", ($(window).height()-($("#current").height()+$("#search-button").height()))+"px");
 		$("#search-body").css("top", ($("#current").height()+$("#search-button").height())+"px");
 		$("#playlist").css("position","fixed");
+		$("#search-content").css("position","relative");
+		$("#search-content").css("overflow-y","visible");
+		$("#search-body").css("visibility","visible");
+		$("#search-input").css("visibility","visible");
+		$("#search-input").focus();
+		$("#search-content").html("");
 		//$("#search-body").css("position","relative");
 	} else {
 		// unexpand
 		added = false;
 		$("#search-button").css("color", "#99CCFF");
-		$("#search-button").css("top", ($(window).height()-$("#search-button").height())+"px");
 		$("#search-body").css("top", ($(window).height())+"px");
 		$("#playlist").css("position","relative");
+		$("#search-content").css("position","fixed");
+		$("#search-body").css("visibility","hidden");
+		$("#search-input").css("visibility","hidden");
+		$("#search-input").val("");
+		$("#search-content").html("");
 		//$("#search-body").css("position","fixed");
 	}
+	var marginTop = ($("#current").height());
+	$("#search-button").css("margin-top", marginTop+"px");
 }
 var tracks;
 function search(text) {
@@ -82,29 +66,54 @@ function search(text) {
 				$("#"+i).click(function() {
 					var i = $(this).attr('id');
 					$(this).css("background-color", "#1F2933");
+					console.log(tracks[i].name);
 					var obj = {
-						"name" : tracks[i].name,
-						"artist" : tracks[i].artists[0].name,
-						"uri" : tracks[i].href
+						"name" :  encodeURIComponent(tracks[i].name),
+						"artist" :  encodeURIComponent(tracks[i].artists[0].name),
+						"uri" :  encodeURIComponent(tracks[i].href)
 					};
 					obj = JSON.stringify(obj);
+					console.log(obj.name);
 					$.post(document.location.protocol+"//"+document.location.host+"/queue?item="+obj);
+					loaded();
+					OnClickAdd();
 				});
 			}
 		}
 	});
 }
 function reloadPlaylist() {
-	var artists = ["Kanye", "Miley Cyrus", "The Outfield"];
-	var titles = ["Bound 2", "Wrecking Ball", "Your Love"];
-	var albums = ["assets/album art2.jpg", "assets/album art3.jpg", "assets/album art4.jpg"];
-
-	for(var i = 0; i < 50; i++) {
-		var artist = artists[i];
-		var title = titles[i];
-		var album = albums[i];
+	
+	if(loadedData==undefined || loadedData.length <= 0) {
+		var marginTop = ($("#current").height());
+		$("#playlist").css("margin-top", (marginTop)+"px");
+		$("#search-button").css("height", 32+"px");
+		$("#search-button").css("width", 64+"px");
+		$("#search-body").css("top", $(window).height()+"px");
+		return;
+	}
+	var workableData = JSON.parse(loadedData[0]);
+	$("#current_song_title").html(workableData.artist);
+	$("#current_song_artist").html(workableData.name);
+	$("#current_song_submit").html("~Anonymouse");
+	$("#current_song_image").attr("src","assets/album art2.jpg");
+	$("#current_song_image").load(function() {
+		var marginTop = ($("#current").height());
+		$("#playlist").css("margin-top", (marginTop)+"px");
+		$("#search-button").css("height", 32+"px");
+		$("#search-button").css("width", 64+"px");
+		$("#search-button").css("margin-top", marginTop+"px");
+		$("#search-body").css("top", $(window).height()+"px");
+	});
+	$("#playlist").html("");
+	for(var i = 1; i < loadedData.length; i++) {
+		console.log(loadedData[i]);
+		workableData = JSON.parse(loadedData[i]);
+		var artist = workableData.artist;
+		var title = workableData.name;
+		var album = undefined;
 		var block = "<div class=\"row song-row\" style=\"background-color:#111111; margin-right:-15px; padding:4px;\">" + 
-				"<div class=\"col-xs-2 song-queue\" style=\"color:#EEEEEE;\">"+(i+1)+"</div>"+
+				"<div class=\"col-xs-2 song-queue\" style=\"color:#EEEEEE;\">"+(i)+"</div>"+
 				"<div class=\"col-xs-10\" >"+	
 					"<div class=\"row queuerow\" style=\"border-radius:5px; margin-right:-15px; padding:4px;\">"+
 						"<div class=\"col-xs-4\" style=\"color:#DDDDDD;\">"+
@@ -126,5 +135,6 @@ function reloadPlaylist() {
 			"</div>";
 		$("#playlist").append(block);
 	}
+
 }
 
