@@ -16,58 +16,39 @@
 	</head>
 
 	<body>
-		<div id="current" class="container" style="position:fixed; z-index: 999; ">
-			<div class="row currentrow" style="margin-right:-15px; padding:4px; padding-top:8px;">
-				<div class="col-xs-6 col-md-2" style="">
-					<img id="current_song_image" src="" class="img-rounded albumcover">
-				</div>
-				<div class="col-xs-6 col-md-2" style="">
-					<div class="row" style="margin-right:0px; margin-top:8px;">
-						<div class="col-xs-12" style="">
-							<p style="color:#FFFFFF; font-size:18px;"><b id="current_song_title"></b></p>
-						</div>
-					</div>
-					<div class="row" style="margin-right:0px; margin-top:8px;">
-						<div class="col-xs-12" style="margin-top:-22px;">
-							<p id="current_song_artist" style="color:#EEEEEE; text-align:left;"></p>
-						</div>
-					</div>
-					<div class="row" style="margin-right:0px; margin-top:8px;">
-						<div class="col-xs-12" style="margin-top:-22px;">
-							<p id="current_song_submit" style="color:#EEEEEE; text-align:left;"></p>
-						</div>
-					</div>
-					<div class="row" style="margin-right:0px; margin-top:0px;">
-						<div class="col-xs-5 col-md-2" style="">
-							<img class="vote" src="assets/thumbsup.png" id="thumbsup">
-						</div>
-						<div class="col-xs-5 col-md-2" style="">
-							<img class="vote" src="assets/thumbsdown.png" id="thumbsup">
-						</div>
-					</div>
-				</div>
+		<div id="current">
+			<div id="current-image">
+				<img id="current-song-image" src="" class="img-rounded albumcover">
 			</div>
-			<div class="row" style="margin-right:-15px;">
-				<div class="col-xs-9" style="background-color:#00FF00; height:4px;">
+			<div id="current-info">
+				<p><b id="current-song-title"></b></p>
+				<p id="current-song-artist"></p>
+				<p id="current-song-submit"></p>
+			</div>
+			
+			
+		</div>
+		<div id="rating">
+			<div style="background-color:#00FF00; height:4px; width: 78%; float:left;">
 					
-				</div>
-				<div class="col-xs-3" style="background-color:#FF0000; height:4px;">
-					
-				</div>
+			</div>
+			<div style="background-color:#FF0000; height:4px; width: 22%; float:left;">
+				
 			</div>
 		</div>
-		<div class="container" >
-			<div id="playlist">
+		<div id="playlist">
 			
-			</div>
 		</div>
 
 		<div id="search-container">
-			<div id="search-button"><b>+</b></div>
-				<div id="search-body">
-					<input id="search-input"></input>
-					<div id="search-content"></div>
-				</div>
+			<div id="search-button">
+				<b>+</b>
+			</div>
+			<div id="search-body">
+				<input id="search-input"></input>
+				<div id="search-content"></div>
+			</div>
 		</div>
+		
 	</body>
 </html>
