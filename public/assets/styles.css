@@ -1,8 +1,10 @@
 body {
+	background-color: #111111;
 	overflow-x: hidden;
 }
 html {
 	background-color: #111111;
+	overflow-x: hidden;
 }
 .title
 {
@@ -11,45 +13,21 @@ html {
 }
 .currentrow
 {
-/* Note: This gradient may render differently in browsers that don't support the unprefixed gradient syntax */
-
-/* IE10 Consumer Preview */ 
-background-image: -ms-linear-gradient(bottom right, #211637 0%, #111111 100%);
-
-/* Mozilla Firefox */ 
-background-image: -moz-linear-gradient(bottom right, #211637 0%, #111111 100%);
-
-/* Opera */ 
-background-image: -o-linear-gradient(bottom right, #211637 0%, #111111 100%);
-
-/* Webkit (Safari/Chrome 10) */ 
-background-image: -webkit-gradient(linear, right bottom, left top, color-stop(0, #211637), color-stop(1, #111111));
-
-/* Webkit (Chrome 11+) */ 
-background-image: -webkit-linear-gradient(bottom right, #211637 0%, #111111 100%);
-
-/* W3C Markup, IE10 Release Preview */ 
-background-image: linear-gradient(to top left, #211637 0%, #111111 100%);
+	padding:4px; 
+	padding-top:8px;
+	background-image: -ms-linear-gradient(bottom right, #211637 0%, #111111 100%);
+	background-image: -moz-linear-gradient(bottom right, #211637 0%, #111111 100%);
+	background-image: -o-linear-gradient(bottom right, #211637 0%, #111111 100%);
+	background-image: -webkit-gradient(linear, right bottom, left top, color-stop(0, #211637), color-stop(1, #111111));
+	background-image: -webkit-linear-gradient(bottom right, #211637 0%, #111111 100%);
+	background-image: linear-gradient(to top left, #211637 0%, #111111 100%);
 }
 .queuerow
 {
-/* IE10 Consumer Preview */ 
-background-image: -ms-linear-gradient(right, #211637 95%, #111111 100%);
-
-/* Mozilla Firefox */ 
-background-image: -moz-linear-gradient(right, #211637 95%, #111111 100%);
-
-/* Opera */ 
-background-image: -o-linear-gradient(right, #211637 95%, #111111 100%);
-
-/* Webkit (Safari/Chrome 10) */ 
-background-image: -webkit-gradient(linear, right top, left top, color-stop(0.95, #211637), color-stop(1, #111111));
-
-/* Webkit (Chrome 11+) */ 
-background-image: -webkit-linear-gradient(right, #211637 95%, #111111 100%);
-
-/* W3C Markup, IE10 Release Preview */ 
-background-image: linear-gradient(to left, #211637 95%, #111111 100%);
+	border-radius:5px; 
+	padding:4px; 
+	display:block; 
+	height:100%;
 }
 .albumcover
 {
@@ -61,77 +39,134 @@ background-image: linear-gradient(to left, #211637 95%, #111111 100%);
 	width:150%;
 	display: block;
 }
-.song-row2
-{
-/* IE10 Consumer Preview */ 
-background-image: -ms-linear-gradient(top, #EEEEEE 0%, #CCCCCC 3%, #CCCCCC 97%, #EEEEEE 100%);
-
-/* Mozilla Firefox */ 
-background-image: -moz-linear-gradient(top, #EEEEEE 0%, #CCCCCC 3%, #CCCCCC 97%, #EEEEEE 100%);
-
-/* Opera */ 
-background-image: -o-linear-gradient(top, #EEEEEE 0%, #CCCCCC 3%, #CCCCCC 97%, #EEEEEE 100%);
-
-/* Webkit (Safari/Chrome 10) */ 
-background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #EEEEEE), color-stop(0.03, #CCCCCC), color-stop(0.97, #CCCCCC), color-stop(1, #EEEEEE));
-
-/* Webkit (Chrome 11+) */ 
-background-image: -webkit-linear-gradient(top, #EEEEEE 0%, #CCCCCC 3%, #CCCCCC 97%, #EEEEEE 100%);
-
-/* W3C Markup, IE10 Release Preview */ 
-background-image: linear-gradient(to bottom, #EEEEEE 0%, #CCCCCC 3%, #CCCCCC 97%, #EEEEEE 100%);
-}
 .song-row
 {
-	background-color: #111111;
-	}
+	height:100%;
+	width:100%; 
+	padding:4px; 
+	float:left;
+}
+.song-details
+{
+	color:#DDDDDD;
+	width:80%; 
+	font-size: 18px;
+	text-align:left;
+	margin-left:23%;
+}
 .song-title
 {
-	font-size: 20px;
+	color:#DDDDDD;
+	font-size: 18px;
 }
 .song-artist
 {
+	color:#DDDDDD;
 	font-size: 18px;
+}
+.song-album
+{
+	color:#DDDDDD;
+	width:20%; 
+	float:left;
 }
 .song-queue
 {
-	font-size: 28px;
+	background-color: #111111;
+	margin: 8px;
+	font-size: 24px;
+	color:#EEEEEE; 
+	width:5%; 
+	float:left
+}
+#rating
+{
+	position:fixed; 
+	width:100%; 
+	z-index:996;
+}
+#current
+{
+
+	background-image: -ms-linear-gradient(bottom right, #211637 0%, #111111 100%);
+	background-image: -moz-linear-gradient(bottom right, #211637 0%, #111111 100%);
+	background-image: -o-linear-gradient(bottom right, #211637 0%, #111111 100%);
+	background-image: -webkit-gradient(linear, right bottom, left top, color-stop(0, #211637), color-stop(1, #111111));
+	background-image: -webkit-linear-gradient(bottom right, #211637 0%, #111111 100%);
+	background-image: linear-gradient(to top left, #211637 0%, #111111 100%);
+	position:fixed; 
+	top: 0;
+	left: 0;
+	z-index: 996;
+}
+#current-info
+{
+	float: left;
+}
+#current-song-image
+{
+	float: left;
+}
+#current-song-title
+{
+
+	color:#EEEEEE; 
+	text-align:left;
+}
+#current-song-artist
+{
+	margin-top: -12px;
+	color:#EEEEEE; 
+	text-align:left;
+}
+#current-song-submit
+{
+	margin-top: -6px;
+	color:#EEEEEE; 
+	text-align:left;
 }
 #search-container
 {
-	position:fixed;
+
 }
 #search-button
 {
-	z-index: 998; 
+	z-index: 997; 
 	position:fixed;
 	right:0;
 	top:0;
-	font-size: 24px;
+	font-size: 32px;
 	background-color:#2B3B4A; 
 	color:#99CCFF; 
 	text-align:center;
 	border-top-left-radius:5px;
 	border-bottom-left-radius:5px;
+	width: 75px;
+	height: 40px;
 }
 #search-body
 {
 	z-index: 997; 
 	position:fixed;
 	right:0;
-	bottom:0;
 	background-color:#2B3B4A; 
 	color:#99CCFF; 
-	text-align:center;
+	padding: 18px;
 	width:100%;
 	visibility: hidden;
 }
 #search-input
 {
-	margin-left: 8px;
-	margin-right: 8px;
-	margin-top: 8px;
-	margin-bottom: 8px;
 	height:32px;
+	margin-bottom: 18px;
+	width: inherit;
 	visibility: hidden;
+}
+.search-item
+{
+
+}
+.search-item:hover
+{
+	background-color: #666666;
 }
